@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@import "./ui/theme.css";
+
+/* Self-hosted so the first paint never waits on Google Fonts. */
+@font-face {
+  font-family: Geist;
+  src: url("./assets/geist.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}

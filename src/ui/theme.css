@@ -1,0 +1,389 @@
+@import "tw-animate-css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: Geist, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-primary: Geist, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-secondary: Manrope, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+
+  --text-md: 1rem;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-halo: var(--halo);
+  --color-link: var(--link);
+  --color-gold: var(--gold);
+  --color-gold-shine: var(--gold-shine);
+  --color-field: var(--field);
+  --color-field-border: var(--field-border);
+  --color-header: var(--header);
+  --color-header-pill: var(--header-pill);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-control: var(--radius);
+  --radius-surface: calc(var(--radius) + 8px);
+  --radius-inner: calc(var(--radius-control) - 4px);
+  --radius-item: calc(var(--radius) - 6px);
+  --radius-menu: calc(var(--radius) + 4px);
+  --radius-menu-item: calc(var(--radius-menu) - 6px);
+
+  --shadow-key: var(--key-shadow);
+  --shadow-surface: var(--surface-shadow);
+  --shadow-float: var(--float-shadow);
+
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+
+  --animate-reveal: reveal var(--reveal-duration, 0.3s) var(--ease-out)
+    var(--reveal-delay, 0s) backwards;
+}
+
+:root {
+  color-scheme: light;
+  --radius: 1rem;
+  --background: oklch(100% 0 0);
+  --foreground: oklch(18% 0.004 265);
+  --card: oklch(100% 0 0);
+  --card-foreground: var(--foreground);
+  --popover: oklch(100% 0 0);
+  --popover-foreground: var(--foreground);
+  --primary: #ab3745;
+  --primary-foreground: oklch(99% 0 0);
+  --secondary: oklch(96.7% 0.001 286.375);
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(96.7% 0.001 286.375);
+  --muted-foreground: oklch(55.2% 0.016 285.938);
+  --accent: oklch(94% 0.002 286);
+  --accent-foreground: var(--foreground);
+  --destructive: oklch(54% 0.22 27.325);
+  --border: oklch(92% 0.004 286.32);
+  --input: oklch(92% 0.004 286.32);
+  --ring: oklch(70.5% 0.015 286.067);
+  --page-gutter: 1rem;
+  --control-h: 2.75rem;
+  --control-body: calc(var(--control-h) - var(--ledge-depth));
+  --card-pad: 1.25rem;
+  --ledge-depth: 4px;
+  --press-duration: 0.18s;
+  --highlight: oklch(100% 0 0 / 0.6);
+  --ledge-primary: oklch(from var(--primary) calc(l - 0.13) calc(c - 0.025) h);
+  --ledge-secondary: oklch(87% 0.004 286);
+  --ledge-outline: oklch(87% 0.004 286);
+  --halo: oklch(20% 0.005 286 / 0.22);
+  --halo-border: oklch(20% 0.005 286 / 0.5);
+  --link: oklch(from var(--primary) calc(l - 0.03) c h);
+  --gold: var(--color-amber-600);
+  --gold-shine: var(--color-amber-300);
+  --header: oklch(98.5% 0.001 286);
+  --header-pill: oklch(94% 0.002 286);
+  --glow: oklch(from var(--primary) l c h / 0.16);
+  --field: oklch(96.7% 0.001 286);
+  --field-border: oklch(0% 0 0 / 0.08);
+  --field-shadow: inset 0 2px 3px oklch(0% 0 0 / 0.07), inset 0 -1px 0 oklch(100% 0 0 / 0.8);
+  --key-shadow: inset 0 1px 0 oklch(100% 0 0 / 0.8), 0 1px 2px oklch(0% 0 0 / 0.08);
+  --surface-shadow: inset 0 1px 0 oklch(100% 0 0 / 0.7), 0 1px 2px oklch(0% 0 0 / 0.06),
+    0 10px 28px -14px oklch(0% 0 0 / 0.2);
+  --float-shadow: 0 2px 4px oklch(0% 0 0 / 0.06), 0 14px 36px -10px oklch(0% 0 0 / 0.22),
+    0 28px 60px -28px oklch(0% 0 0 / 0.25);
+}
+
+@media (width >= 48rem) {
+  :root {
+    --page-gutter: 1.5rem;
+    --card-pad: 1.5rem;
+  }
+}
+
+@media (width >= 64rem) {
+  :root {
+    --page-gutter: 2rem;
+  }
+}
+
+.dark {
+  color-scheme: dark;
+  --background: oklch(14.1% 0.005 285.823);
+  --foreground: oklch(98.5% 0 0);
+  --gold: var(--color-amber-400);
+  --gold-shine: var(--color-yellow-100);
+  --card: oklch(21% 0.006 285.885);
+  --card-foreground: var(--foreground);
+  --popover: oklch(21% 0.006 285.885);
+  --popover-foreground: var(--foreground);
+  --primary: #ab3745;
+  --primary-foreground: oklch(99% 0 0);
+  --secondary: oklch(27.4% 0.006 286.033);
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(27.4% 0.006 286.033);
+  --muted-foreground: oklch(70.5% 0.015 286.067);
+  --accent: oklch(30% 0.006 286);
+  --accent-foreground: var(--foreground);
+  --destructive: oklch(70.4% 0.191 22.216);
+  --border: oklch(100% 0 0 / 0.1);
+  --input: oklch(100% 0 0 / 0.15);
+  --ring: oklch(55.2% 0.016 285.938);
+  --highlight: oklch(100% 0 0 / 0.09);
+  --ledge-primary: oklch(from var(--primary) calc(l - 0.13) calc(c - 0.025) h);
+  --ledge-secondary: oklch(20% 0.006 286);
+  --ledge-outline: oklch(20% 0.006 286);
+  --halo: oklch(100% 0 0 / 0.28);
+  --halo-border: oklch(100% 0 0 / 0.55);
+  --link: oklch(from var(--primary) 0.74 calc(c - 0.05) h);
+  --header: oklch(18.5% 0.005 286);
+  --header-pill: oklch(26% 0.006 286);
+  --glow: oklch(from var(--primary) l c h / 0.32);
+  --field: oklch(12% 0.005 286);
+  --field-border: oklch(100% 0 0 / 0.07);
+  --field-shadow: inset 0 2px 4px oklch(0% 0 0 / 0.45), inset 0 -1px 0 oklch(100% 0 0 / 0.05);
+  --key-shadow: inset 0 1px 0 var(--highlight), 0 1px 2px oklch(0% 0 0 / 0.4);
+  --surface-shadow: inset 0 1px 0 oklch(100% 0 0 / 0.06), 0 1px 2px oklch(0% 0 0 / 0.3),
+    0 12px 32px -14px oklch(0% 0 0 / 0.6);
+  --float-shadow: inset 0 1px 0 oklch(100% 0 0 / 0.07), 0 2px 6px oklch(0% 0 0 / 0.35),
+    0 18px 44px -10px oklch(0% 0 0 / 0.6);
+}
+
+/* The real site sets a global default border colour, so a bare `border` uses the token.
+   Without this Tailwind v4 leaves it at currentColor, which paints bright outlines. */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+}
+
+@keyframes reveal {
+  0% {
+    opacity: var(--reveal-opacity, 0);
+    filter: blur(var(--reveal-blur, 0px));
+    transform: translateY(var(--reveal-offset, 12px)) scale(var(--reveal-scale, 1));
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: 100% 0;
+  }
+  40%,
+  to {
+    background-position: 0 0;
+  }
+}
+
+@keyframes sweep {
+  0% {
+    translate: -120%;
+  }
+  35%,
+  to {
+    translate: 260%;
+  }
+}
+
+@keyframes heartbeat {
+  0%,
+  30%,
+  to {
+    scale: 1;
+  }
+  15% {
+    scale: 1.28;
+  }
+  45% {
+    scale: 1.16;
+  }
+}
+
+/* The pressed/raised button effect. The JS press runner writes --press-y / --press-scale. */
+@utility press {
+  --tw-shadow: inset 0 1px 0 var(--highlight),
+    0 calc(var(--ledge-depth) - var(--press-y, 0) * 1px) 0 var(--ledge, transparent),
+    var(--press-glow, 0 0 #0000);
+  box-shadow: var(--tw-inset-shadow, 0 0 #0000), var(--tw-inset-ring-shadow, 0 0 #0000),
+    var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  margin-bottom: var(--ledge-depth);
+  translate: 0 calc(var(--press-y, 0) * 1px);
+  transition-property: color, background-color, border-color, opacity;
+  transition-duration: var(--press-duration);
+}
+
+@utility press-flat {
+  scale: calc(1 - (1 - var(--press-scale, 1)) * var(--press-depth, 1));
+  transition-property: color, background-color, border-color, box-shadow, opacity;
+  transition-duration: var(--press-duration);
+}
+
+@utility sponsor {
+  --press-glow: 0 8px 22px -6px var(--glow);
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 45%;
+    pointer-events: none;
+    translate: -120%;
+    background: linear-gradient(100deg, #0000, oklch(100% 0 0 / 0.3), #0000);
+    animation: sweep 4s var(--ease-out) 1s infinite;
+  }
+
+  &:hover > svg:first-child {
+    animation: heartbeat 1s ease-in-out infinite;
+  }
+}
+
+@utility field {
+  &:where(:not([data-slot="input-group-control"])) {
+    background-color: var(--field);
+    border: 1.5px solid var(--field-border);
+    border-radius: var(--radius-control);
+    --tw-shadow: var(--field-shadow);
+    box-shadow: var(--tw-inset-shadow, 0 0 #0000), var(--tw-inset-ring-shadow, 0 0 #0000),
+      var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    transition-property: background-color, border-color, box-shadow, color;
+    transition-duration: var(--press-duration);
+    transition-timing-function: var(--ease-spring);
+  }
+
+  &:where(:not([data-slot="input-group-control"])):focus-visible {
+    border-color: var(--halo-border);
+    background-color: oklch(from var(--field) calc(l + 0.02) c h);
+  }
+}
+
+@utility page-frame {
+  width: 100%;
+  padding-inline: var(--page-gutter);
+  margin-inline: auto;
+
+  @media (width >= 40rem) {
+    max-width: 40rem;
+  }
+  @media (width >= 48rem) {
+    max-width: 48rem;
+  }
+  @media (width >= 64rem) {
+    max-width: 64rem;
+  }
+  @media (width >= 80rem) {
+    max-width: 80rem;
+  }
+  @media (width >= 96rem) {
+    max-width: 96rem;
+  }
+}
+
+@utility dotted-bg {
+  position: relative;
+  clip-path: inset(0);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: -1;
+    height: min(100%, 100lvh);
+    pointer-events: none;
+    background: linear-gradient(#59595940, #0000);
+    mask: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cpattern id='d' width='16' height='16' patternUnits='userSpaceOnUse' patternTransform='rotate(35)'%3E%3Ccircle cx='12' cy='12' r='1.6'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23d)'/%3E%3C/svg%3E");
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: -1;
+    height: min(100%, 100lvh);
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, var(--background) 60%);
+  }
+}
+
+@utility text-fade {
+  color: var(--color-foreground);
+  margin: -0.5em;
+  padding: 0.5em;
+  mask-image: linear-gradient(to bottom right, #000, #0009);
+}
+
+@utility text-gold {
+  color: #0000;
+  background-image: linear-gradient(110deg, var(--gold) 35%, var(--gold-shine) 50%, var(--gold) 65%);
+  background-position: 0 0;
+  background-size: 300% 100%;
+  background-clip: text;
+  animation: shine 5s ease-in-out 1s infinite;
+}
+
+@utility corner-continuous {
+  corner-shape: superellipse(1.5);
+}
+
+@utility drag-none {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sponsor::after,
+  .sponsor:hover > svg:first-child,
+  .animate-reveal,
+  .text-gold {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------------------- accents */
+/* Ready-made accent themes. Put the class on the same element as `.dark`,
+   usually <html>. The variant is display-only; every other token is shared. */
+
+.theme-red {
+  --primary: #ab3745;
+}
+.theme-blue {
+  --primary: #2b5ce6;
+}
+.theme-green {
+  --primary: #1d8a4e;
+}
+
+/* Re-derive the primary-tinted tokens so a theme also works when the class sits
+   on a descendant instead of on <html>. */
+.theme-red,
+.theme-blue,
+.theme-green {
+  --ledge-primary: oklch(from var(--primary) calc(l - 0.13) calc(c - 0.025) h);
+  --link: oklch(from var(--primary) calc(l - 0.03) c h);
+  --glow: oklch(from var(--primary) l c h / 0.16);
+}
+
+.dark.theme-red,
+.dark.theme-blue,
+.dark.theme-green {
+  --ledge-primary: oklch(from var(--primary) calc(l - 0.13) calc(c - 0.025) h);
+  --link: oklch(from var(--primary) 0.74 calc(c - 0.05) h);
+  --glow: oklch(from var(--primary) l c h / 0.32);
+}
