@@ -4,6 +4,8 @@ Copy your Spotify playlists, liked songs and saved albums from one account to an
 Free, MIT licensed, no server. Everything runs in your browser and talks straight to
 Spotify.
 
+Live at https://playlist-mover.pages.dev/
+
 ## What it moves
 
 - Playlists you made: recreated on the new account with the same name, description,
